@@ -1,0 +1,212 @@
+/*crear variables en css*/
+:root{
+    --colorBotones: rgb(73, 73, 73);
+}
+/*---Las variables de css se llaman así: var(--colorBotones)*/
+/*-----------------------------*/
+
+/*GENERALES*/
+*{
+    padding: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url('/images/bg-body.png');
+    font-family: Arial, Helvetica, sans-serif;
+}
+a{
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+}
+li{
+    list-style: none;
+}
+.container{
+    width: 100%;
+    padding: 10px;
+}
+/*header */
+header{
+    text-align: center;
+    margin-bottom: 30px;
+}
+header .logo{
+    width: 180px;
+    margin:15px 0px 30px 0px;
+    border-radius: 90px;
+}
+/*header navegacion*/
+header .toggle-nav{
+    display: block;
+    margin-bottom: 30px;
+}
+header .toggle-nav span{
+background-color: grey;
+padding: 5px;
+
+}
+header nav.main-nav li{
+    background-color:var(--colorBotones);
+    border: 1px solid white;
+    padding: 5px;
+}
+/*banner mobil*/
+.banner img{
+    display: none;
+}
+
+/*secciones de todos los articulos/productos */
+.container section.vip-products article{
+margin-bottom: 30px;
+}
+.container section.vip-products article .photo-container{
+    position: relative; /*contenedor  padre*/
+}
+.photo-container img.photo{
+    width: 100%;
+}
+.photo-container img.special{
+    position: absolute;
+    top:0px;
+    right: 10px;
+}
+.container section.vip-products article .zoom{
+    background-color: rgba(0,0,0,0.5);
+    width: 100%;
+    display: block; /*los a, tienen inline, por lo tanto ponemos en bloqe xq quqeremos que ocupe el 100% de la pantalla*/
+    position: absolute;
+    top: 45%;
+    padding: 5px;
+    text-align: center;
+}
+section.vip-products article.product h2{
+    margin: 25px 0px;
+}
+section.vip-products article.product p{
+    margin-bottom: 15px;
+}
+section.vip-products article.product a.more{
+    background-color: var(--colorBotones);
+    padding: 5px;
+    text-transform: lowercase;
+}
+
+/*FOOTER*/
+footer.main-footer{
+    background-color: firebrick;
+}
+footer.main-footer ul li{
+    padding: 5px;
+    border-bottom: 1px solid white;
+    text-align: center;
+    text-transform: none;
+}
+
+footer.main-footer ul li:last-child{
+    border: none;
+}
+/*****************************************************************/
+/*MEDIA QUERIES*/
+
+
+/*VERSION TABLETS*/
+/* arranca apartir de esa medida*/
+@media(min-width:426px){
+    
+    /*header*/
+    header{
+        margin-bottom: 20px;
+    }
+    .container header .toggle-nav{
+        display: none;
+    }
+    header nav.main-nav li{
+        display: inline-block;
+        width: 117px;
+    }
+    /*:not(last-child)  
+    indica que todo lo que esta dentro del bloque se aplica menos al ultimo hijo*/
+    header nav.main-nav li:not(:last-child){
+        /*inline se adapta al contenido que hay dentro del elemento y se achica, block se se adapra a la caja*/
+        margin-right:4px;
+    }
+    /*BANNER*/
+    .banner img{
+        display: block; /*aparece la portada*/
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    /*Products*/
+    .container section.vip-products{
+        overflow: hidden;
+    }
+    .container section.vip-products article{
+        float: left;
+        width: 48%;
+
+    }
+    section.vip-products article:nth-child(odd){
+        margin-right: 4%;
+    }    
+}
+
+/*ESCRITORIO*/
+ @media(min-width:769px){
+     /*AL MODIFICAR LAS PROPIEDADES, TENEMOS QUE VOLVER A NOMBRARLO COMO LO HABIAMOS HECHO EN LA ANTERIOR VISUALIZACION, SINO, NO LO TOMA */
+     /*header*/
+    .container{
+         max-width: 1180px;
+     }
+    header{
+         width: 100%;
+     }
+    header nav.main-nav ul{
+         overflow: hidden;
+         width: 100%;
+     }
+    header nav.main-nav li{
+       width: 180px;
+       float: left;
+    }
+    header nav.main-nav li:not(:last-child){
+        margin-right: 15px;
+    }
+    /*BANNER*/
+    
+    /*PRODUCTOS*/
+
+    .container section.vip-products article:nth-child(3n){
+        margin: none;
+    }
+    section.vip-products article:nth-child(odd){
+        margin-right: 0;
+    } 
+    .container section.vip-products article{
+        max-width: 380px;
+        width: 31.9%;
+        margin-right: 2%;
+    }
+    .container section.vip-products article:nth-child(3n){
+        margin-right: 0;
+    }
+    /*FOOTER*/
+    footer.main-footer{
+        border-radius: 20px 20px 0px 0px;
+        padding: 60px 0px;
+        text-align: center;
+
+    }
+    footer.main-footer ul li{
+        padding: 5px;
+        border: none;
+        border-right: 1px solid white;
+        display: inline-block;
+    }
+    footer.main-footer ul li a{
+        padding-right: 5px;
+        font-size: 14px;
+    }
+ }
